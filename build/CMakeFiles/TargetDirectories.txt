@@ -1,0 +1,3 @@
+C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/gitlab_artifact_downloader.dir
+C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/ZERO_CHECK.dir

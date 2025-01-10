@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\weerapol\Desktop\test-download\gitlab-artifact-downloader\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\weerapol\Desktop\test-download\gitlab-artifact-downloader\src\GitLabService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\weerapol\Desktop\test-download\gitlab-artifact-downloader\src\FileManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\weerapol\Desktop\test-download\gitlab-artifact-downloader\src\ConfigManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\weerapol\Desktop\test-download\gitlab-artifact-downloader\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{D1A70376-2CE1-375A-8BCC-CA5F2B93DBEE}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

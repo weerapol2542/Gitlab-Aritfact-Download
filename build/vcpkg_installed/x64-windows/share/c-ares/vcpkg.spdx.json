@@ -1,0 +1,154 @@
+{
+  "$schema": "https://raw.githubusercontent.com/spdx/spdx-spec/v2.2.1/schemas/spdx-schema.json",
+  "spdxVersion": "SPDX-2.2",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "documentNamespace": "https://spdx.org/spdxdocs/c-ares-x64-windows-1.34.2-61352c2f-c072-43a0-ba36-b0dc3c0b9f37",
+  "name": "c-ares:x64-windows@1.34.2 ddee6fd73fa9b324813e5cccdb7da043846c4dec3be4da1dec688c00ebba8a56",
+  "creationInfo": {
+    "creators": [
+      "Tool: vcpkg-2024-10-18-e392d7347fe72dff56e7857f7571c22301237ae6"
+    ],
+    "created": "2024-12-04T02:08:33Z"
+  },
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "GENERATES",
+      "relatedSpdxElement": "SPDXRef-binary"
+    },
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-file-0"
+    },
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-file-1"
+    },
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-file-2"
+    },
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-file-3"
+    },
+    {
+      "spdxElementId": "SPDXRef-binary",
+      "relationshipType": "GENERATED_FROM",
+      "relatedSpdxElement": "SPDXRef-port"
+    },
+    {
+      "spdxElementId": "SPDXRef-file-0",
+      "relationshipType": "CONTAINED_BY",
+      "relatedSpdxElement": "SPDXRef-port"
+    },
+    {
+      "spdxElementId": "SPDXRef-file-1",
+      "relationshipType": "CONTAINED_BY",
+      "relatedSpdxElement": "SPDXRef-port"
+    },
+    {
+      "spdxElementId": "SPDXRef-file-2",
+      "relationshipType": "CONTAINED_BY",
+      "relatedSpdxElement": "SPDXRef-port"
+    },
+    {
+      "spdxElementId": "SPDXRef-file-3",
+      "relationshipType": "CONTAINED_BY",
+      "relatedSpdxElement": "SPDXRef-port"
+    }
+  ],
+  "packages": [
+    {
+      "name": "c-ares",
+      "SPDXID": "SPDXRef-port",
+      "versionInfo": "1.34.2",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@78f3eb04280f992a8af0ebc68f67d965542ebffc",
+      "homepage": "https://github.com/c-ares/c-ares",
+      "licenseConcluded": "MIT-CMU",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "description": "A C library for asynchronous DNS requests",
+      "comment": "This is the port (recipe) consumed by vcpkg."
+    },
+    {
+      "name": "c-ares:x64-windows",
+      "SPDXID": "SPDXRef-binary",
+      "versionInfo": "ddee6fd73fa9b324813e5cccdb7da043846c4dec3be4da1dec688c00ebba8a56",
+      "downloadLocation": "NONE",
+      "licenseConcluded": "MIT-CMU",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "This is a binary package built by vcpkg."
+    },
+    {
+      "SPDXID": "SPDXRef-resource-1",
+      "name": "c-ares/c-ares",
+      "downloadLocation": "git+https://github.com/c-ares/c-ares@v1.34.2",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "checksums": [
+        {
+          "algorithm": "SHA512",
+          "checksumValue": "0c4041ef3ec8e54d11826ae5ea3dbb3752fbd6dcfeb65c3777e56309dc0f4944068c24d54b39cced219c7ee440aae7a6704269558627c26a90001d872d99ded9"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "fileName": "./C:/vcpkg/buildtrees/versioning_/versions/c-ares/78f3eb04280f992a8af0ebc68f67d965542ebffc/avoid-docs.patch",
+      "SPDXID": "SPDXRef-file-0",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "b92a601d102f7e02bda1850066ae91970d92d3f2c782014993ff56393d99a592"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./C:/vcpkg/buildtrees/versioning_/versions/c-ares/78f3eb04280f992a8af0ebc68f67d965542ebffc/portfile.cmake",
+      "SPDXID": "SPDXRef-file-1",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "ff95537dee6f71c3f65ea350dc5e811d502a87ac5b4bfcdd437f879917ce0111"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./C:/vcpkg/buildtrees/versioning_/versions/c-ares/78f3eb04280f992a8af0ebc68f67d965542ebffc/usage",
+      "SPDXID": "SPDXRef-file-2",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "390c198cfee5fa032ebcce20eb7b95dd704061fb85ff48276e78fb613ea42d06"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./C:/vcpkg/buildtrees/versioning_/versions/c-ares/78f3eb04280f992a8af0ebc68f67d965542ebffc/vcpkg.json",
+      "SPDXID": "SPDXRef-file-3",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "6ed01aa4b793b7d17b0ab44e6cc8a89996f680da0a339de52c42c71fa5666629"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION"
+    }
+  ]
+}

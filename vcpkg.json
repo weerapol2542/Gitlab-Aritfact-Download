@@ -1,0 +1,16 @@
+{
+    "name": "gitlab-artifact-downloader",
+    "version": "1.0.0",
+    "builtin-baseline": "d05fa3fd4d0271a89f1c13c7e4ab2214366943d5",
+    "dependencies": [
+        {
+            "name": "drogon"
+        },
+        {
+            "name": "nlohmann-json"
+        },
+        {
+            "name": "openssl"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "api_token": "glpat-8uerLzR9F7RB32xKLkzS",
+    "artifact_paths": [
+        "installer/GitLabArtifactDownloader-Setup.exe",
+        "version.txt",
+        "dist/GitLabArtifactDownloader.app/Contents/Info.plist",
+        "dist/GitLabArtifactDownloader.app/Contents/MacOS/GitLabArtifactDownloader",
+        "dist/GitLabArtifactDownloader.app/Contents/Resources/AppIcon.icns",
+        "dist/GitLabArtifactDownloader.app/Contents/_CodeSignature/CodeResources"
+    ],
+    "download_path": "C:\\\\Users\\\\weerapol\\\\Desktop\\\\test-download",
+    "encrypted_api_token": "",
+    "gitlab_url": "https://gitlab.itcv-software.com",
+    "project_id": "6"
+}

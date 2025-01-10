@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>GitLab Pipeline Artifact Downloader</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <meta name="theme-color" content="#F44336" />
+    <link rel="apple-touch-icon" href="/icon-192x192.png" />
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-brand">
+                <i class="fab fa-gitlab"></i>
+                <h1>Pipeline Artifact Downloader</h1>
+            </div>
+            <button class="settings-button" id="open-settings" aria-label="Open Settings">
+                <i class="fas fa-cog"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="main-content">
+            <!-- Settings Modal -->
+            <div class="modal-backdrop" id="settings-modal" style="display: none">
+                <div class="modal-content">
+                    <div class="modal-scroll">
+                        <div class="modal-header">
+                            <h2>Settings</h2>
+                            <button class="modal-close" id="close-settings" aria-label="Close Settings">&times;</button>
+                        </div>
+
+                        <form id="settings-form">
+                            <div class="form-scroll">
+                                <div class="form-group">
+                                    <label for="gitlab-url">GitLab URL</label>
+                                    <input type="url" id="gitlab-url" placeholder="e.g., https://gitlab.com" required />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="api-token">API Token</label>
+                                    <div class="input-with-icon">
+                                        <input type="password" id="api-token" required autocomplete="current-password" />
+                                        <button type="button" class="input-icon toggle-password" aria-label="Toggle Password Visibility">
+                                            <i class="far fa-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="input-hint">Your GitLab personal access token</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="project-id">Project ID</label>
+                                    <input type="text" id="project-id" placeholder="e.g., 123456" required pattern="\d+" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="download-path">Download Path</label>
+                                    <div class="input-with-icon">
+                                        <input type="text" id="download-path" value="downloads" required />
+                                        <button type="button" class="input-icon select-folder" aria-label="Select Folder">
+                                            <i class="fas fa-folder-open"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="artifact-patterns">Artifact Paths</label>
+                                    <div class="pattern-list" id="artifact-patterns">
+                                        <div class="pattern-item">
+                                            <textarea class="artifact-pattern" rows="1" 
+                                                placeholder="Enter artifact paths (press Enter for new line)"
+                                                onkeydown="handlePatternKeydown(event)"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="submit" class="btn primary">Save Settings</button>
+                                    <button type="button" class="btn secondary" id="test-connection">
+                                        Test Connection
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pipelines Panel -->
+            <section class="card" id="pipelines-panel">
+                <div class="panel-header">
+                    <h2>Recent Pipelines</h2>
+                    <div class="pipeline-controls">
+                        <div class="search-filter">
+                            <input type="text" id="pipeline-search" placeholder="Search pipelines..." 
+                                   aria-label="Search pipelines" />
+                            <select id="filter-status" aria-label="Filter by status">
+                                <option value="">All Status</option>
+                                <option value="success">Success</option>
+                                <option value="failed">Failed</option>
+                                <option value="running">Running</option>
+                            </select>
+                        </div>
+                        <button class="btn secondary" id="refresh-pipelines">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+
+                <div class="pipelines-list">
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Pipeline ID</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Branch</th>
+                                    <th scope="col">Created At</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pipelines-table-body">
+                                <!-- Pipelines will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="pagination">
+                    <button class="btn secondary" id="prev-page" disabled aria-label="Previous page">
+                        <i class="fas fa-chevron-left"></i> Previous
+                    </button>
+                    <span id="page-info">Page 1 of 1</span>
+                    <button class="btn secondary" id="next-page" disabled aria-label="Next page">
+                        Next <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Download Status Panel -->
+            <section class="card" id="download-panel">
+                <div class="panel-header">
+                    <h2>Download Status</h2>
+                   
+                </div>
+
+                <div id="active-downloads">
+                    <!-- Active downloads will be shown here -->
+                </div>
+
+                <div id="download-history">
+                    <div class="history-header">
+                        <h3>Download History</h3>
+                        <button class="btn secondary" id="clear-history">
+                            <span class="material-icons">delete</span> Clear History
+                        </button>
+                        
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Pipeline ID</th>
+                                    <th scope="col">Artifact</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Downloaded At</th>
+                                    <th scope="col">Size</th>
+                                </tr>
+                            </thead>
+                            <tbody id="history-table-body">
+                                <!-- Download history will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" role="alert" aria-live="polite"></div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Loading...</p>
+    </div>
+
+    <!-- Error Dialog -->
+    <div id="error-dialog" class="modal-backdrop" style="display: none;">
+        <div class="modal-content error-content">
+            <div class="modal-header">
+                <h2>Error</h2>
+                <button class="modal-close" aria-label="Close error dialog">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="error-message"></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn primary" onclick="document.getElementById('error-dialog').style.display='none'">
+                    OK
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Template for Download Status -->
+    <!-- <template id="download-status-template">
+        <div class="download-status">
+            <div class="download-content">
+                <div class="download-header">
+                    <div class="download-info">
+                        <span class="download-id"></span>
+                        <span class="download-state"></span>
+                    </div>
+                    <div class="download-controls">
+                        <button class="btn secondary pause-btn" aria-label="Pause download">
+                            <i class="fas fa-pause"></i>
+                        </button>
+                        <button class="btn secondary cancel-btn" aria-label="Cancel download">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="download-body">
+                    <div class="current-file"></div>
+                    <div class="progress-container">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-text"></div>
+                    </div>
+                    <div class="download-details">
+                        <span class="download-speed"></span>
+                        <span class="download-size"></span>
+                    </div>
+                </div>
+                <div class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+    </template> -->
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+   
+</body>
+</html>
