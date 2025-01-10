@@ -1,8 +1,0 @@
-
-{
-    "gitlab_url": "https://gitlab.com",
-    "api_token": "",
-    "project_id": "",
-    "download_path": "downloads",
-    "artifact_paths": ["deploy/artifact.zip"]
-}

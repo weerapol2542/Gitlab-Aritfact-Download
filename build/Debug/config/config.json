@@ -1,8 +1,0 @@
-{
-    "api_token": "test",
-    "artifact_paths": [],
-    "download_path": "1",
-    "encrypted_api_token": "",
-    "gitlab_url": "https://gitlab.com",
-    "project_id": "1"
-}
