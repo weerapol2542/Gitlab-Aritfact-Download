@@ -1,11 +1,12 @@
 {
-    "api_token": "glpat-QcCNyGJrdiW-YrWcgMx6",
+    "api_token": "glpat-8uerLzR9F7RB32xKLkzS",
     "artifact_paths": [
-        "artifacts.zip"
+        "version.txt",
+        "dist/GitLabArtifactDownloader.app/Contents/Info.plist",
+        "installer/GitLabArtifactDownloader-Setup.exe"
     ],
-   
-    "download_path": "C:\\Users\\weerapol\\Desktop\\test-download",
+    "download_path": "C:\\\\Users\\\\weerapol\\\\Desktop\\\\test-download",
     "encrypted_api_token": "",
-    "gitlab_url": "https://gitlab.com",
-    "project_id": "64710495"
+    "gitlab_url": "https://gitlab.itcv-software.com",
+    "project_id": "6"
 }

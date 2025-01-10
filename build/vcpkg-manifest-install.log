@@ -15,39 +15,39 @@ The following packages will be built and installed:
 Additional packages (*) will be modified to complete this operation.
 Restored 11 package(s) from C:\Users\weerapol\AppData\Local\vcpkg\archives in 1.1 s. Use --debug to see more details.
 Installing 1/11 vcpkg-cmake:x64-windows@2024-04-23...
-Elapsed time to handle vcpkg-cmake:x64-windows: 7.27 ms
+Elapsed time to handle vcpkg-cmake:x64-windows: 8 ms
 vcpkg-cmake:x64-windows package ABI: 669bb20c9beece40cb9b99f56ee582ac18186eaf4bc8460a5dd3294d7f12a9a1
 Installing 2/11 zlib:x64-windows@1.3.1...
-Elapsed time to handle zlib:x64-windows: 13.1 ms
+Elapsed time to handle zlib:x64-windows: 16.5 ms
 zlib:x64-windows package ABI: b8a61bc3ee913bbba1fc38f7dd42d68c10286477071f2c12f01b0ad051db7a7d
 Installing 3/11 vcpkg-cmake-config:x64-windows@2024-05-23...
-Elapsed time to handle vcpkg-cmake-config:x64-windows: 11.6 ms
+Elapsed time to handle vcpkg-cmake-config:x64-windows: 12.5 ms
 vcpkg-cmake-config:x64-windows package ABI: 43003a5064f5de769d4394207a3d1aa7a43dfcc08c4e14ecdd61d545dccf9ddf
 Installing 4/11 vcpkg-cmake-get-vars:x64-windows@2024-09-22...
-Elapsed time to handle vcpkg-cmake-get-vars:x64-windows: 11.6 ms
+Elapsed time to handle vcpkg-cmake-get-vars:x64-windows: 6.12 ms
 vcpkg-cmake-get-vars:x64-windows package ABI: 99d828ecfeb1d45a3db6f64a5c8d1ae4c079bce5125ab03a616cd084d7728d44
 Installing 5/11 openssl:x64-windows@3.4.0...
-Elapsed time to handle openssl:x64-windows: 53.5 ms
+Elapsed time to handle openssl:x64-windows: 53.3 ms
 openssl:x64-windows package ABI: 71d730535c26c096dfcedcf519ca11ec474b6ce127b2d0d271500ca1947d4e85
 Installing 6/11 c-ares:x64-windows@1.34.2...
-Elapsed time to handle c-ares:x64-windows: 20.3 ms
+Elapsed time to handle c-ares:x64-windows: 18.4 ms
 c-ares:x64-windows package ABI: ddee6fd73fa9b324813e5cccdb7da043846c4dec3be4da1dec688c00ebba8a56
 Installing 7/11 trantor:x64-windows@1.5.22...
-Elapsed time to handle trantor:x64-windows: 24.9 ms
+Elapsed time to handle trantor:x64-windows: 24.3 ms
 trantor:x64-windows package ABI: 67bfaec7d258d4e1952adbc2eada352aa3718114307423f0c1b65a2ed5c5bde3
 Installing 8/11 jsoncpp:x64-windows@1.9.6...
-Elapsed time to handle jsoncpp:x64-windows: 22.1 ms
+Elapsed time to handle jsoncpp:x64-windows: 23.1 ms
 jsoncpp:x64-windows package ABI: 3c22635fe8da47ad6219965c256788c372a6117a56963757c33d696d2c08f009
 Installing 9/11 brotli:x64-windows@1.1.0#1...
-Elapsed time to handle brotli:x64-windows: 20.6 ms
+Elapsed time to handle brotli:x64-windows: 24.3 ms
 brotli:x64-windows package ABI: 51fb07ea9cb48cab05a5c99ae59169098f4cf49e4ad65310991b4ff2f80fb87a
 Installing 10/11 drogon:x64-windows@1.9.8...
-Elapsed time to handle drogon:x64-windows: 48.4 ms
+Elapsed time to handle drogon:x64-windows: 43.4 ms
 drogon:x64-windows package ABI: 28ef4d56cb2e1789bb92bba3d7a0f34719b61c6ad615c60a00ba2e4fa2681954
 Installing 11/11 nlohmann-json:x64-windows@3.11.3#1...
 Elapsed time to handle nlohmann-json:x64-windows: 32.7 ms
 nlohmann-json:x64-windows package ABI: 266226f84ba4d7ff519a64368f8104f475141515f5afd5e731e201ec238efda4
-Total install time: 266 ms
+Total install time: 263 ms
 openssl is compatible with built-in CMake targets:
 
   find_package(OpenSSL REQUIRED)
