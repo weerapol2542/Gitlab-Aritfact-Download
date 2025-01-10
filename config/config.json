@@ -1,0 +1,11 @@
+{
+    "api_token": "glpat-QcCNyGJrdiW-YrWcgMx6",
+    "artifact_paths": [
+        "artifacts.zip"
+    ],
+   
+    "download_path": "C:\\Users\\weerapol\\Desktop\\test-download",
+    "encrypted_api_token": "",
+    "gitlab_url": "https://gitlab.com",
+    "project_id": "64710495"
+}

@@ -210,7 +210,7 @@ th {
 
 .progress-bar {
     height: 6px;
-    background-color: var(--primary-color);
+    background-color: #FF6B35;
     transition: width 0.3s ease;
 }
 
@@ -799,11 +799,11 @@ th {
     margin: 8px 0;
 }
 
-.progress-bar {
+/* .progress-bar {
     height: 100%;
     background-color: var(--primary-color);
     transition: width 0.3s ease;
-}
+} */
 
 
 .download-status {

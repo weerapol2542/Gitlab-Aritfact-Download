@@ -5,6 +5,89 @@
 #include <iostream>
 #include <drogon/utils/Utilities.h>
 #undef min
+#include <mutex>
+
+void GitLabService::pauseDownload(const std::string &job_id)
+{
+    try
+    {
+        std::lock_guard<std::mutex> lock(download_mutex_);
+        if (auto it = download_jobs_.find(job_id); it != download_jobs_.end())
+        {
+            auto &job = it->second;
+            if (job.status == "in_progress")
+            {
+                job.should_pause = true;
+                // ไม่ต้องเปลี่ยนสถานะที่นี่ ปล่อยให้ thread ดาวน์โหลดจัดการ
+                std::cout << "[Download] Pausing download for job " << job_id << std::endl;
+            }
+        }
+        else
+        {
+            throw std::runtime_error("Download job not found");
+        }
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << "Error pausing download: " << e.what() << std::endl;
+        throw;
+    }
+}
+
+void GitLabService::resumeDownload(const std::string &job_id)
+{
+    try
+    {
+        std::lock_guard<std::mutex> lock(download_mutex_);
+        if (auto it = download_jobs_.find(job_id); it != download_jobs_.end())
+        {
+            auto &job = it->second;
+            if (job.status == "paused")
+            {
+                job.should_pause = false;
+                // ไม่ต้องเปลี่ยนสถานะที่นี่ ปล่อยให้ thread ดาวน์โหลดจัดการ
+                std::cout << "[Download] Resuming download for job " << job_id << std::endl;
+            }
+        }
+        else
+        {
+            throw std::runtime_error("Download job not found");
+        }
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << "Error resuming download: " << e.what() << std::endl;
+        throw;
+    }
+}
+
+void GitLabService::cancelDownload(const std::string &job_id)
+{
+    try
+    {
+        std::lock_guard<std::mutex> lock(download_mutex_);
+        if (auto it = download_jobs_.find(job_id); it != download_jobs_.end())
+        {
+            auto &job = it->second;
+            if (job.status != "completed" && job.status != "failed")
+            {
+                job.should_cancel = true;
+                job.status = "cancelled";
+                std::cout << "[Download] Cancelling download for job " << job_id << std::endl;
+            }
+        }
+        else
+        {
+            throw std::runtime_error("Download job not found");
+        }
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << "Error cancelling download: " << e.what() << std::endl;
+        throw;
+    }
+}
+
 GitLabService &GitLabService::getInstance()
 {
     static GitLabService instance;
@@ -162,21 +245,21 @@ std::vector<GitLabService::JobInfo> GitLabService::getPipelineJobs(int pipeline_
     return jobs;
 }
 
-void GitLabService::logDownloadProgress(const std::string& stage, const std::string& message) {
+void GitLabService::logDownloadProgress(const std::string &stage, const std::string &message)
+{
     std::time_t currentTime = std::time(nullptr);
     std::string timestamp = std::ctime(&currentTime);
     timestamp.pop_back(); // Remove trailing newline
 
     std::lock_guard<std::mutex> lock(log_mutex_); // Protect concurrent console output
-    std::cout << timestamp << " [" << std::setw(10) << std::left << stage << "] " 
+    std::cout << timestamp << " [" << std::setw(10) << std::left << stage << "] "
               << message << std::endl;
 }
 
-
 GitLabService::ArtifactDownloadJob GitLabService::startArtifactDownload(
     int pipeline_id,
-    const std::vector<std::string>& artifact_paths,
-    const std::string& destination_path)
+    const std::vector<std::string> &artifact_paths,
+    const std::string &destination_path)
 {
     std::string download_id = std::to_string(std::time(nullptr));
 
@@ -188,14 +271,18 @@ GitLabService::ArtifactDownloadJob GitLabService::startArtifactDownload(
         "Initiating download...",
         "",
         0.0,
-        std::time(nullptr)
+        std::time(nullptr),
+        false, // should_pause
+        false  // should_cancel
     };
 
     download_jobs_[download_id] = job;
-    const auto& settings = ConfigManager::getInstance().getSettings();
-    
-    auto download_task = [this, pipeline_id, artifact_paths, destination_path, download_id, &settings]() {
-        try {
+    const auto &settings = ConfigManager::getInstance().getSettings();
+
+    auto download_task = [this, pipeline_id, artifact_paths, destination_path, download_id, &settings]()
+    {
+        try
+        {
             std::cout << "[Download Started] Pipeline #" << pipeline_id << std::endl;
             std::filesystem::create_directories(destination_path);
             auto jobs = getPipelineJobs(pipeline_id);
@@ -208,18 +295,22 @@ GitLabService::ArtifactDownloadJob GitLabService::startArtifactDownload(
             std::string temp_dir = destination_path + "\\temp_" + download_id;
             std::filesystem::create_directories(temp_dir);
 
-            auto& job = download_jobs_[download_id];
+            auto &job = download_jobs_[download_id];
             job.status = "in_progress";
 
-            // First pass: Calculate total size and identify missing files
-            for (const auto& artifact_path : artifact_paths) {
+            // First pass: Calculate total size
+            for (const auto &artifact_path : artifact_paths)
+            {
                 std::cout << "[Checking] " << artifact_path << std::endl;
                 bool artifact_found = false;
-                for (const auto& job_info : jobs) {
-                    try {
+
+                for (const auto &job_info : jobs)
+                {
+                    try
+                    {
                         auto url = buildApiUrl("/projects/" + settings.project_id +
-                                           "/jobs/" + std::to_string(job_info.id) +
-                                           "/artifacts/" + artifact_path);
+                                               "/jobs/" + std::to_string(job_info.id) +
+                                               "/artifacts/" + artifact_path);
 
                         auto request = createArtifactDownloadRequest(url);
                         auto promise = std::make_shared<std::promise<drogon::HttpResponsePtr>>();
@@ -227,27 +318,32 @@ GitLabService::ArtifactDownloadJob GitLabService::startArtifactDownload(
 
                         http_client_->sendRequest(
                             request,
-                            [promise](drogon::ReqResult result, const drogon::HttpResponsePtr& response) {
+                            [promise](drogon::ReqResult result, const drogon::HttpResponsePtr &response)
+                            {
                                 promise->set_value(response);
                             });
 
                         auto response = future.get();
-                        
-                        if (validateResponse(response)) {
+
+                        if (validateResponse(response))
+                        {
                             artifact_found = true;
-                            const auto& body = response->getBody();
+                            const auto &body = response->getBody();
                             total_size += body.length();
+                            std::cout << "[Size] " << artifact_path << ": " << body.length() << " bytes" << std::endl;
                             break;
                         }
                     }
-                    catch (const std::exception& e) {
-                        std::cerr << "[Error] Checking artifact " << artifact_path 
-                                << ": " << e.what() << std::endl;
+                    catch (const std::exception &e)
+                    {
+                        std::cerr << "[Error] Checking artifact " << artifact_path
+                                  << ": " << e.what() << std::endl;
                         continue;
                     }
                 }
 
-                if (!artifact_found) {
+                if (!artifact_found)
+                {
                     std::cout << "[Missing] " << artifact_path << std::endl;
                     missing_files.push_back(artifact_path);
                 }
@@ -256,26 +352,43 @@ GitLabService::ArtifactDownloadJob GitLabService::startArtifactDownload(
             job.total_size = total_size;
             std::cout << "[Total Size] " << total_size << " bytes" << std::endl;
 
-            // Second pass: Download available files
-            for (const auto& artifact_path : artifact_paths) {
-                if (std::find(missing_files.begin(), missing_files.end(), artifact_path) != missing_files.end()) {
-                    file_index++;
-                    continue;
+            // Second pass: Download files
+            for (const auto &artifact_path : artifact_paths)
+            {
+                if (job.should_cancel)
+                {
+                    job.status = "cancelled";
+                    if (std::filesystem::exists(temp_dir))
+                    {
+                        std::filesystem::remove_all(temp_dir);
+                    }
+                    return;
                 }
 
-                for (const auto& job_info : jobs) {
-                    if (job.status == "cancelled" || job.status == "paused") {
-                        std::cout << "[Status] Download " << job.status << std::endl;
-                        if (std::filesystem::exists(temp_dir)) {
+                while (job.should_pause)
+                {
+                    job.status = "paused";
+                    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+                    if (job.should_cancel)
+                    {
+                        job.status = "cancelled";
+                        if (std::filesystem::exists(temp_dir))
+                        {
                             std::filesystem::remove_all(temp_dir);
                         }
                         return;
                     }
+                }
 
-                    try {
+                job.status = "in_progress";
+
+                for (const auto &job_info : jobs)
+                {
+                    try
+                    {
                         auto url = buildApiUrl("/projects/" + settings.project_id +
-                                           "/jobs/" + std::to_string(job_info.id) +
-                                           "/artifacts/" + artifact_path);
+                                               "/jobs/" + std::to_string(job_info.id) +
+                                               "/artifacts/" + artifact_path);
 
                         auto request = createArtifactDownloadRequest(url);
                         auto promise = std::make_shared<std::promise<drogon::HttpResponsePtr>>();
@@ -283,56 +396,74 @@ GitLabService::ArtifactDownloadJob GitLabService::startArtifactDownload(
 
                         http_client_->sendRequest(
                             request,
-                            [promise](drogon::ReqResult result, const drogon::HttpResponsePtr& response) {
+                            [promise](drogon::ReqResult result, const drogon::HttpResponsePtr &response)
+                            {
                                 promise->set_value(response);
                             });
 
                         auto response = future.get();
-                        
-                        if (validateResponse(response)) {
+
+                        if (validateResponse(response))
+                        {
                             std::filesystem::path artifact_fs_path(artifact_path);
                             auto save_path = std::filesystem::path(temp_dir) / artifact_fs_path.filename();
                             std::ofstream file(save_path.string(), std::ios::binary);
-                            
-                            if (file.is_open()) {
-                                const auto& body = response->getBody();
-                                const size_t chunk_size = 8192;
-                                const char* data = body.data();
+
+                            // ในฟังก์ชัน startArtifactDownload แก้ไขส่วนการดาวน์โหลด:
+
+                            if (file.is_open())
+                            {
+                                const auto &body = response->getBody();
+                                // เพิ่มขนาด chunk size เป็น 1MB
+                                const size_t chunk_size = 1024 * 1024;
+                                const char *data = body.data();
                                 const size_t data_size = body.length();
 
                                 job.current_file = artifact_fs_path.filename().string();
 
-                                // Create message data with progress information
-                                nlohmann::json message_data;
-                                message_data["current_file_number"] = file_index;
-                                message_data["total_files"] = artifact_paths.size();
-                                message_data["total_size"] = total_size;
-                                job.message = message_data.dump();
-
-                                std::cout << "[Downloading] " << job.current_file 
-                                        << " (" << file_index << "/" << artifact_paths.size() << ")" << std::endl;
-
-                                for (size_t i = 0; i < data_size; i += chunk_size) {
-                                    if (job.status == "cancelled" || job.status == "paused") {
+                                for (size_t i = 0; i < data_size; i += chunk_size)
+                                {
+                                    if (job.should_cancel)
+                                    {
                                         file.close();
+                                        if (std::filesystem::exists(temp_dir))
+                                        {
+                                            std::filesystem::remove_all(temp_dir);
+                                        }
+                                        job.status = "cancelled";
                                         return;
                                     }
 
+                                    // ตรวจสอบสถานะ pause
+                                    while (job.should_pause)
+                                    {
+                                        job.status = "paused";
+                                        download_jobs_[download_id] = job; // อัพเดทสถานะทันที
+                                        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+
+                                        if (job.should_cancel)
+                                        {
+                                            file.close();
+                                            if (std::filesystem::exists(temp_dir))
+                                            {
+                                                std::filesystem::remove_all(temp_dir);
+                                            }
+                                            job.status = "cancelled";
+                                            return;
+                                        }
+                                    }
+
+                                    job.status = "in_progress";
                                     size_t current_chunk = std::min(chunk_size, data_size - i);
                                     file.write(data + i, current_chunk);
                                     job.downloaded_size = current_total_downloaded + i + current_chunk;
 
-                                    // Update progress more frequently
-                                    if (i % (chunk_size * 4) == 0) {  // Update every 32KB
-                                        // Calculate overall progress
-                                        double file_progress = static_cast<double>(i + current_chunk) / data_size;
-                                        double overall_progress = 
-                                            (file_index - 1.0 + file_progress) / artifact_paths.size() * 100.0;
-                                        
-                                        job.progress = overall_progress;
-                                        message_data["progress"] = overall_progress;
-                                        message_data["current_file_progress"] = file_progress * 100.0;
-                                        job.message = message_data.dump();
+                                    double progress = (static_cast<double>(job.downloaded_size) / job.total_size) * 100.0;
+                                    job.progress = progress;
+
+                                    // อัพเดท UI ทุก 4MB
+                                    if (i % (chunk_size * 4) == 0)
+                                    {
                                         download_jobs_[download_id] = job;
                                     }
                                 }
@@ -340,59 +471,121 @@ GitLabService::ArtifactDownloadJob GitLabService::startArtifactDownload(
                                 file.close();
                                 current_total_downloaded += data_size;
                                 downloaded_files.push_back({artifact_path, data_size});
-                                std::cout << "[Complete] " << job.current_file << std::endl;
+                                break;
+                            }
+                            {
+                                const auto &body = response->getBody();
+                                const size_t chunk_size = 8192;
+                                const char *data = body.data();
+                                const size_t data_size = body.length();
+
+                                job.current_file = artifact_fs_path.filename().string();
+
+                                for (size_t i = 0; i < data_size; i += chunk_size)
+                                {
+                                    if (job.should_cancel)
+                                    {
+                                        file.close();
+                                        if (std::filesystem::exists(temp_dir))
+                                        {
+                                            std::filesystem::remove_all(temp_dir);
+                                        }
+                                        job.status = "cancelled";
+                                        return;
+                                    }
+
+                                    while (job.should_pause)
+                                    {
+                                        job.status = "paused";
+                                        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+                                        if (job.should_cancel)
+                                        {
+                                            file.close();
+                                            if (std::filesystem::exists(temp_dir))
+                                            {
+                                                std::filesystem::remove_all(temp_dir);
+                                            }
+                                            job.status = "cancelled";
+                                            return;
+                                        }
+                                    }
+
+                                    job.status = "in_progress";
+                                    size_t current_chunk = std::min(chunk_size, data_size - i);
+                                    file.write(data + i, current_chunk);
+                                    job.downloaded_size = current_total_downloaded + i + current_chunk;
+
+                                    double progress = (static_cast<double>(job.downloaded_size) / job.total_size) * 100.0;
+                                    job.progress = progress;
+
+                                    // Update UI less frequently to reduce overhead
+                                    if (i % (chunk_size * 4) == 0)
+                                    {
+                                        download_jobs_[download_id] = job;
+                                    }
+                                }
+
+                                file.close();
+                                current_total_downloaded += data_size;
+                                downloaded_files.push_back({artifact_path, data_size});
                                 break;
                             }
                         }
                     }
-                    catch (const std::exception& e) {
-                        std::cerr << "[Error] Downloading " << artifact_path 
-                                << ": " << e.what() << std::endl;
+                    catch (const std::exception &e)
+                    {
+                        std::cerr << "[Error] Downloading " << artifact_path
+                                  << ": " << e.what() << std::endl;
                         continue;
                     }
                 }
                 file_index++;
             }
 
-            // Create zip file if any files were downloaded
-            if (!downloaded_files.empty()) {
+            // Create completion message and handle cleanup
+            if (!downloaded_files.empty())
+            {
                 job.message = "Creating artifacts.zip...";
                 std::cout << "[Creating] artifacts.zip" << std::endl;
 
                 std::filesystem::path final_zip_path = std::filesystem::path(destination_path) / "artifacts.zip";
                 std::string powershell_command = "powershell -Command \"Compress-Archive -Path '" +
-                                               std::filesystem::path(temp_dir).string() + "\\*' -DestinationPath '" +
-                                               final_zip_path.string() + "' -Force\"";
+                                                 std::filesystem::path(temp_dir).string() + "\\*' -DestinationPath '" +
+                                                 final_zip_path.string() + "' -Force\"";
 
                 int zip_result = std::system(powershell_command.c_str());
-                if (zip_result != 0) {
+                if (zip_result != 0)
+                {
                     throw std::runtime_error("Failed to create artifacts.zip");
                 }
 
                 // Create completion message
                 std::stringstream message;
-                if (!missing_files.empty()) {
+                if (!missing_files.empty())
+                {
                     message << "Successfully downloaded " << downloaded_files.size() << " file(s). "
-                           << "The following files were not found in pipeline #" << pipeline_id << ":\n";
-                    for (const auto& file : missing_files) {
+                            << "The following files were not found:\n";
+                    for (const auto &file : missing_files)
+                    {
                         message << "- " << file << "\n";
                     }
                     job.status = "partial_success";
                     std::cout << "[Status] Partial Success" << std::endl;
-                } else {
+                }
+                else
+                {
                     message << "All files downloaded successfully.";
                     job.status = "completed";
                     std::cout << "[Status] Completed" << std::endl;
                 }
 
-                // Add download details to job
+                // Add download details
                 nlohmann::json download_info;
                 download_info["downloaded_files"] = nlohmann::json::array();
-                for (const auto& [name, size] : downloaded_files) {
-                    download_info["downloaded_files"].push_back({
-                        {"name", name},
-                        {"size", size}
-                    });
+                for (const auto &[name, size] : downloaded_files)
+                {
+                    download_info["downloaded_files"].push_back({{"name", name},
+                                                                 {"size", size}});
                 }
                 download_info["missing_files"] = missing_files;
                 download_info["total_size"] = total_size;
@@ -401,23 +594,27 @@ GitLabService::ArtifactDownloadJob GitLabService::startArtifactDownload(
                 job.progress = 100.0;
                 job.message = message.str() + "\n" + download_info.dump();
             }
-            else {
+            else
+            {
                 throw std::runtime_error("No files were found in pipeline #" + std::to_string(pipeline_id));
             }
 
             // Cleanup
-            if (std::filesystem::exists(temp_dir)) {
+            if (std::filesystem::exists(temp_dir))
+            {
                 std::filesystem::remove_all(temp_dir);
             }
         }
-        catch (const std::exception& e) {
+        catch (const std::exception &e)
+        {
             std::cerr << "[Error] Download task error: " << e.what() << std::endl;
-            auto& job = download_jobs_[download_id];
+            auto &job = download_jobs_[download_id];
             job.status = "failed";
             job.message = std::string("Download failed: ") + e.what();
 
             std::string temp_dir = destination_path + "\\temp_" + download_id;
-            if (std::filesystem::exists(temp_dir)) {
+            if (std::filesystem::exists(temp_dir))
+            {
                 std::filesystem::remove_all(temp_dir);
             }
         }
@@ -427,15 +624,16 @@ GitLabService::ArtifactDownloadJob GitLabService::startArtifactDownload(
     return job;
 }
 
+GitLabService::ArtifactDownloadJob GitLabService::getDownloadStatus(const std::string &job_id)
+{
+    std::lock_guard<std::mutex> lock(download_mutex_);
+    if (auto it = download_jobs_.find(job_id); it != download_jobs_.end())
+    {
+        auto &job = it->second;
 
-
-
-GitLabService::ArtifactDownloadJob GitLabService::getDownloadStatus(const std::string& job_id) {
-    if (auto it = download_jobs_.find(job_id); it != download_jobs_.end()) {
-        auto& job = it->second;
-        
         // ลดการแสดง debug info เมื่อสถานะเป็น completed หรือ partial_success
-        if (job.status != "completed" && job.status != "partial_success") {
+        if (job.status != "completed" && job.status != "partial_success")
+        {
             nlohmann::json debug_info;
             debug_info["job_id"] = job.job_id;
             debug_info["status"] = job.status;
@@ -455,8 +653,7 @@ GitLabService::ArtifactDownloadJob GitLabService::getDownloadStatus(const std::s
         "Download job not found",
         "",
         0.0,
-        std::time(nullptr)
-    };
+        std::time(nullptr)};
 }
 
 std::string GitLabService::buildApiUrl(const std::string &endpoint) const

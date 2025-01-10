@@ -163,58 +163,83 @@ void setupControllers(drogon::HttpAppFramework &app)
     },
     {drogon::Get});
 
-
-
-    app.registerHandler(
-    "/api/artifacts/pause/{job_id}",
-    [](const drogon::HttpRequestPtr &req,
-       std::function<void(const drogon::HttpResponsePtr &)> &&callback,
-       const std::string &job_id)
-    {
+// แก้ไขส่วน resume handler
+app.registerHandler(
+    "/api/artifacts/resume/{job_id}",
+    [](const drogon::HttpRequestPtr& req,
+       std::function<void(const drogon::HttpResponsePtr&)>&& callback,
+       const std::string& job_id) {
         try {
-            auto& job = GitLabService::getInstance().getDownloadStatus(job_id);
-            job.status = (job.status == "paused") ? "in_progress" : "paused";
+            GitLabService::getInstance().resumeDownload(job_id);
             
             nlohmann::json response;
             response["success"] = true;
-            response["status"] = job.status;
+            response["message"] = "Download resumed";
             
             auto resp = drogon::HttpResponse::newHttpJsonResponse(response.dump());
             callback(resp);
-        } catch (const std::exception &e) {
-            // Error handling
-            auto error_resp = drogon::HttpResponse::newHttpJsonResponse(
-                nlohmann::json{{"error", true}, {"message", e.what()}}.dump()
-            );
-            error_resp->setStatusCode(drogon::k500InternalServerError);
-            callback(error_resp);
+        } catch (const std::exception& e) {
+            nlohmann::json error;
+            error["error"] = true;
+            error["message"] = e.what();
+            
+            auto resp = drogon::HttpResponse::newHttpJsonResponse(error.dump());
+            resp->setStatusCode(drogon::k500InternalServerError);
+            callback(resp);
         }
     },
     {drogon::Post});
 
-    app.registerHandler(
-    "/api/artifacts/cancel/{job_id}",
-    [](const drogon::HttpRequestPtr &req,
-       std::function<void(const drogon::HttpResponsePtr &)> &&callback,
-       const std::string &job_id)
-    {
+// แก้ไขส่วน pause handler
+app.registerHandler(
+    "/api/artifacts/pause/{job_id}",
+    [](const drogon::HttpRequestPtr& req,
+       std::function<void(const drogon::HttpResponsePtr&)>&& callback,
+       const std::string& job_id) {
         try {
-            auto& job = GitLabService::getInstance().getDownloadStatus(job_id);
-            job.status = "cancelled";
+            GitLabService::getInstance().pauseDownload(job_id);
             
             nlohmann::json response;
             response["success"] = true;
-            response["status"] = job.status;
+            response["message"] = "Download paused";
             
             auto resp = drogon::HttpResponse::newHttpJsonResponse(response.dump());
             callback(resp);
-        } catch (const std::exception &e) {
-            // Error handling
-            auto error_resp = drogon::HttpResponse::newHttpJsonResponse(
-                nlohmann::json{{"error", true}, {"message", e.what()}}.dump()
-            );
-            error_resp->setStatusCode(drogon::k500InternalServerError);
-            callback(error_resp);
+        } catch (const std::exception& e) {
+            nlohmann::json error;
+            error["error"] = true;
+            error["message"] = e.what();
+            
+            auto resp = drogon::HttpResponse::newHttpJsonResponse(error.dump());
+            resp->setStatusCode(drogon::k500InternalServerError);
+            callback(resp);
+        }
+    },
+    {drogon::Post});
+
+// แก้ไขส่วน cancel handler
+app.registerHandler(
+    "/api/artifacts/cancel/{job_id}",
+    [](const drogon::HttpRequestPtr& req,
+       std::function<void(const drogon::HttpResponsePtr&)>&& callback,
+       const std::string& job_id) {
+        try {
+            GitLabService::getInstance().cancelDownload(job_id);
+            
+            nlohmann::json response;
+            response["success"] = true;
+            response["message"] = "Download cancelled";
+            
+            auto resp = drogon::HttpResponse::newHttpJsonResponse(response.dump());
+            callback(resp);
+        } catch (const std::exception& e) {
+            nlohmann::json error;
+            error["error"] = true;
+            error["message"] = e.what();
+            
+            auto resp = drogon::HttpResponse::newHttpJsonResponse(error.dump());
+            resp->setStatusCode(drogon::k500InternalServerError);
+            callback(resp);
         }
     },
     {drogon::Post});
