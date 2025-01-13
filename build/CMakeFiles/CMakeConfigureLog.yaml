@@ -24,7 +24,7 @@ events:
       The output was:
       0
       MSBuild version 17.7.2+d6990bcfa for .NET Framework
-      Build started 13/1/2568 12:55:33.
+      Build started 13/1/2568 15:42:14.
       
       Project "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\3.31.0-rc3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -63,7 +63,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:01.12
+      Time Elapsed 00:00:01.09
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -82,8 +82,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-0trw0g"
-      binary: "C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-0trw0g"
+      source: "C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-d316up"
+      binary: "C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-d316up"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
@@ -97,39 +97,39 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-0trw0g'
+        Change Dir: 'C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-d316up'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_6baa5.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_8f606.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.7.2+d6990bcfa for .NET Framework
-        Build started 13/1/2568 12:55:34.
+        Build started 13/1/2568 15:42:16.
         
-        Project "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-0trw0g\\cmTC_6baa5.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-d316up\\cmTC_8f606.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_6baa5.dir\\Debug\\".
-          Creating directory "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-0trw0g\\Debug\\".
-          Creating directory "cmTC_6baa5.dir\\Debug\\cmTC_6baa5.tlog\\".
+          Creating directory "cmTC_8f606.dir\\Debug\\".
+          Creating directory "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-d316up\\Debug\\".
+          Creating directory "cmTC_8f606.dir\\Debug\\cmTC_8f606.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_6baa5.dir\\Debug\\cmTC_6baa5.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_6baa5.dir\\Debug\\cmTC_6baa5.tlog\\unsuccessfulbuild".
+          Creating "cmTC_8f606.dir\\Debug\\cmTC_8f606.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_8f606.dir\\Debug\\cmTC_8f606.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6baa5.dir\\Debug\\\\" /Fd"cmTC_6baa5.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_8f606.dir\\Debug\\\\" /Fd"cmTC_8f606.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.37.32822 for x64
           CMakeCXXCompilerABI.cpp
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6baa5.dir\\Debug\\\\" /Fd"cmTC_6baa5.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_8f606.dir\\Debug\\\\" /Fd"cmTC_8f606.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCXXCompilerABI.cpp"
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-0trw0g\\Debug\\cmTC_6baa5.exe" /INCREMENTAL /ILK:"cmTC_6baa5.dir\\Debug\\cmTC_6baa5.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-0trw0g/Debug/cmTC_6baa5.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-0trw0g/Debug/cmTC_6baa5.lib" /MACHINE:X64  /machine:x64 cmTC_6baa5.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_6baa5.vcxproj -> C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-0trw0g\\Debug\\cmTC_6baa5.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-d316up\\Debug\\cmTC_8f606.exe" /INCREMENTAL /ILK:"cmTC_8f606.dir\\Debug\\cmTC_8f606.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-d316up/Debug/cmTC_8f606.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-d316up/Debug/cmTC_8f606.lib" /MACHINE:X64  /machine:x64 cmTC_8f606.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_8f606.vcxproj -> C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-d316up\\Debug\\cmTC_8f606.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_6baa5.dir\\Debug\\cmTC_6baa5.tlog\\unsuccessfulbuild".
-          Touching "cmTC_6baa5.dir\\Debug\\cmTC_6baa5.tlog\\cmTC_6baa5.lastbuildstate".
-        Done Building Project "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-0trw0g\\cmTC_6baa5.vcxproj" (default targets).
+          Deleting file "cmTC_8f606.dir\\Debug\\cmTC_8f606.tlog\\unsuccessfulbuild".
+          Touching "cmTC_8f606.dir\\Debug\\cmTC_8f606.tlog\\cmTC_8f606.lastbuildstate".
+        Done Building Project "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-d316up\\cmTC_8f606.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.56
+        Time Elapsed 00:00:00.55
         
       exitCode: 0
   -
@@ -178,8 +178,8 @@ events:
     checks:
       - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
     directories:
-      source: "C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-g5xfum"
-      binary: "C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-g5xfum"
+      source: "C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-fgo8j8"
+      binary: "C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-fgo8j8"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
@@ -193,39 +193,39 @@ events:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-g5xfum'
+        Change Dir: 'C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-fgo8j8'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_adec0.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_d79fb.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.7.2+d6990bcfa for .NET Framework
-        Build started 13/1/2568 12:55:35.
+        Build started 13/1/2568 15:42:17.
         
-        Project "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-g5xfum\\cmTC_adec0.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fgo8j8\\cmTC_d79fb.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_adec0.dir\\Debug\\".
-          Creating directory "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-g5xfum\\Debug\\".
-          Creating directory "cmTC_adec0.dir\\Debug\\cmTC_adec0.tlog\\".
+          Creating directory "cmTC_d79fb.dir\\Debug\\".
+          Creating directory "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fgo8j8\\Debug\\".
+          Creating directory "cmTC_d79fb.dir\\Debug\\cmTC_d79fb.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_adec0.dir\\Debug\\cmTC_adec0.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_adec0.dir\\Debug\\cmTC_adec0.tlog\\unsuccessfulbuild".
+          Creating "cmTC_d79fb.dir\\Debug\\cmTC_d79fb.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_d79fb.dir\\Debug\\cmTC_d79fb.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_adec0.dir\\Debug\\\\" /Fd"cmTC_adec0.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-g5xfum\\src.cxx"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_d79fb.dir\\Debug\\\\" /Fd"cmTC_d79fb.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fgo8j8\\src.cxx"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.37.32822 for x64
           src.cxx
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_adec0.dir\\Debug\\\\" /Fd"cmTC_adec0.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-g5xfum\\src.cxx"
-        C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-g5xfum\\src.cxx(1,10): fatal  error C1083: Cannot open include file: 'pthread.h': No such file or directory [C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-g5xfum\\cmTC_adec0.vcxproj]
-        Done Building Project "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-g5xfum\\cmTC_adec0.vcxproj" (default targets) -- FAILED.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_d79fb.dir\\Debug\\\\" /Fd"cmTC_d79fb.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fgo8j8\\src.cxx"
+        C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fgo8j8\\src.cxx(1,10): fatal  error C1083: Cannot open include file: 'pthread.h': No such file or directory [C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fgo8j8\\cmTC_d79fb.vcxproj]
+        Done Building Project "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fgo8j8\\cmTC_d79fb.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-g5xfum\\cmTC_adec0.vcxproj" (default target) (1) ->
+        "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fgo8j8\\cmTC_d79fb.vcxproj" (default target) (1) ->
         (ClCompile target) -> 
-          C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-g5xfum\\src.cxx(1,10): fatal  error C1083: Cannot open include file: 'pthread.h': No such file or directory [C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-g5xfum\\cmTC_adec0.vcxproj]
+          C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fgo8j8\\src.cxx(1,10): fatal  error C1083: Cannot open include file: 'pthread.h': No such file or directory [C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fgo8j8\\cmTC_d79fb.vcxproj]
         
             0 Warning(s)
             1 Error(s)
         
-        Time Elapsed 00:00:00.41
+        Time Elapsed 00:00:00.40
         
       exitCode: 1
   -
@@ -245,8 +245,8 @@ events:
     checks:
       - "Looking for pthread_create in pthreads"
     directories:
-      source: "C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-5wtixv"
-      binary: "C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-5wtixv"
+      source: "C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-cqinza"
+      binary: "C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-cqinza"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
@@ -260,41 +260,41 @@ events:
       variable: "CMAKE_HAVE_PTHREADS_CREATE"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-5wtixv'
+        Change Dir: 'C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-cqinza'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_bd84a.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_76973.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.7.2+d6990bcfa for .NET Framework
-        Build started 13/1/2568 12:55:36.
+        Build started 13/1/2568 15:42:17.
         
-        Project "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5wtixv\\cmTC_bd84a.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cqinza\\cmTC_76973.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_bd84a.dir\\Debug\\".
-          Creating directory "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5wtixv\\Debug\\".
-          Creating directory "cmTC_bd84a.dir\\Debug\\cmTC_bd84a.tlog\\".
+          Creating directory "cmTC_76973.dir\\Debug\\".
+          Creating directory "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cqinza\\Debug\\".
+          Creating directory "cmTC_76973.dir\\Debug\\cmTC_76973.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_bd84a.dir\\Debug\\cmTC_bd84a.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_bd84a.dir\\Debug\\cmTC_bd84a.tlog\\unsuccessfulbuild".
+          Creating "cmTC_76973.dir\\Debug\\cmTC_76973.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_76973.dir\\Debug\\cmTC_76973.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_bd84a.dir\\Debug\\\\" /Fd"cmTC_bd84a.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5wtixv\\CheckFunctionExists.cxx"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_76973.dir\\Debug\\\\" /Fd"cmTC_76973.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cqinza\\CheckFunctionExists.cxx"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.37.32822 for x64
           CheckFunctionExists.cxx
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_bd84a.dir\\Debug\\\\" /Fd"cmTC_bd84a.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5wtixv\\CheckFunctionExists.cxx"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_76973.dir\\Debug\\\\" /Fd"cmTC_76973.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cqinza\\CheckFunctionExists.cxx"
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5wtixv\\Debug\\cmTC_bd84a.exe" /INCREMENTAL /ILK:"cmTC_bd84a.dir\\Debug\\cmTC_bd84a.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-5wtixv/Debug/cmTC_bd84a.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-5wtixv/Debug/cmTC_bd84a.lib" /MACHINE:X64  /machine:x64 cmTC_bd84a.dir\\Debug\\CheckFunctionExists.obj
-        LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5wtixv\\cmTC_bd84a.vcxproj]
-        Done Building Project "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5wtixv\\cmTC_bd84a.vcxproj" (default targets) -- FAILED.
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cqinza\\Debug\\cmTC_76973.exe" /INCREMENTAL /ILK:"cmTC_76973.dir\\Debug\\cmTC_76973.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-cqinza/Debug/cmTC_76973.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-cqinza/Debug/cmTC_76973.lib" /MACHINE:X64  /machine:x64 cmTC_76973.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cqinza\\cmTC_76973.vcxproj]
+        Done Building Project "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cqinza\\cmTC_76973.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5wtixv\\cmTC_bd84a.vcxproj" (default target) (1) ->
+        "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cqinza\\cmTC_76973.vcxproj" (default target) (1) ->
         (Link target) -> 
-          LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5wtixv\\cmTC_bd84a.vcxproj]
+          LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cqinza\\cmTC_76973.vcxproj]
         
             0 Warning(s)
             1 Error(s)
         
-        Time Elapsed 00:00:00.48
+        Time Elapsed 00:00:00.46
         
       exitCode: 1
   -
@@ -314,8 +314,8 @@ events:
     checks:
       - "Looking for pthread_create in pthread"
     directories:
-      source: "C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-3x9j73"
-      binary: "C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-3x9j73"
+      source: "C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-mf577p"
+      binary: "C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-mf577p"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
@@ -329,41 +329,41 @@ events:
       variable: "CMAKE_HAVE_PTHREAD_CREATE"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-3x9j73'
+        Change Dir: 'C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-mf577p'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_60a63.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_4f87f.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.7.2+d6990bcfa for .NET Framework
-        Build started 13/1/2568 12:55:37.
+        Build started 13/1/2568 15:42:18.
         
-        Project "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3x9j73\\cmTC_60a63.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mf577p\\cmTC_4f87f.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_60a63.dir\\Debug\\".
-          Creating directory "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3x9j73\\Debug\\".
-          Creating directory "cmTC_60a63.dir\\Debug\\cmTC_60a63.tlog\\".
+          Creating directory "cmTC_4f87f.dir\\Debug\\".
+          Creating directory "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mf577p\\Debug\\".
+          Creating directory "cmTC_4f87f.dir\\Debug\\cmTC_4f87f.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_60a63.dir\\Debug\\cmTC_60a63.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_60a63.dir\\Debug\\cmTC_60a63.tlog\\unsuccessfulbuild".
+          Creating "cmTC_4f87f.dir\\Debug\\cmTC_4f87f.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_4f87f.dir\\Debug\\cmTC_4f87f.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_60a63.dir\\Debug\\\\" /Fd"cmTC_60a63.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3x9j73\\CheckFunctionExists.cxx"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_4f87f.dir\\Debug\\\\" /Fd"cmTC_4f87f.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mf577p\\CheckFunctionExists.cxx"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.37.32822 for x64
           CheckFunctionExists.cxx
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_60a63.dir\\Debug\\\\" /Fd"cmTC_60a63.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3x9j73\\CheckFunctionExists.cxx"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_4f87f.dir\\Debug\\\\" /Fd"cmTC_4f87f.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mf577p\\CheckFunctionExists.cxx"
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3x9j73\\Debug\\cmTC_60a63.exe" /INCREMENTAL /ILK:"cmTC_60a63.dir\\Debug\\cmTC_60a63.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-3x9j73/Debug/cmTC_60a63.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-3x9j73/Debug/cmTC_60a63.lib" /MACHINE:X64  /machine:x64 cmTC_60a63.dir\\Debug\\CheckFunctionExists.obj
-        LINK : fatal error LNK1104: cannot open file 'pthread.lib' [C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3x9j73\\cmTC_60a63.vcxproj]
-        Done Building Project "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3x9j73\\cmTC_60a63.vcxproj" (default targets) -- FAILED.
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mf577p\\Debug\\cmTC_4f87f.exe" /INCREMENTAL /ILK:"cmTC_4f87f.dir\\Debug\\cmTC_4f87f.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-mf577p/Debug/cmTC_4f87f.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-mf577p/Debug/cmTC_4f87f.lib" /MACHINE:X64  /machine:x64 cmTC_4f87f.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthread.lib' [C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mf577p\\cmTC_4f87f.vcxproj]
+        Done Building Project "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mf577p\\cmTC_4f87f.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3x9j73\\cmTC_60a63.vcxproj" (default target) (1) ->
+        "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mf577p\\cmTC_4f87f.vcxproj" (default target) (1) ->
         (Link target) -> 
-          LINK : fatal error LNK1104: cannot open file 'pthread.lib' [C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3x9j73\\cmTC_60a63.vcxproj]
+          LINK : fatal error LNK1104: cannot open file 'pthread.lib' [C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mf577p\\cmTC_4f87f.vcxproj]
         
             0 Warning(s)
             1 Error(s)
         
-        Time Elapsed 00:00:00.42
+        Time Elapsed 00:00:00.39
         
       exitCode: 1
   -
@@ -379,8 +379,8 @@ events:
     checks:
       - "Looking for C++ include filesystem"
     directories:
-      source: "C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-xzw0pf"
-      binary: "C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-xzw0pf"
+      source: "C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-1ljd0g"
+      binary: "C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-1ljd0g"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
@@ -394,39 +394,39 @@ events:
       variable: "_CXX_FILESYSTEM_HAVE_HEADER"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-xzw0pf'
+        Change Dir: 'C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-1ljd0g'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_39699.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_4db6d.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.7.2+d6990bcfa for .NET Framework
-        Build started 13/1/2568 12:55:37.
+        Build started 13/1/2568 15:42:19.
         
-        Project "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-xzw0pf\\cmTC_39699.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1ljd0g\\cmTC_4db6d.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_39699.dir\\Debug\\".
-          Creating directory "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-xzw0pf\\Debug\\".
-          Creating directory "cmTC_39699.dir\\Debug\\cmTC_39699.tlog\\".
+          Creating directory "cmTC_4db6d.dir\\Debug\\".
+          Creating directory "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1ljd0g\\Debug\\".
+          Creating directory "cmTC_4db6d.dir\\Debug\\cmTC_4db6d.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_39699.dir\\Debug\\cmTC_39699.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_39699.dir\\Debug\\cmTC_39699.tlog\\unsuccessfulbuild".
+          Creating "cmTC_4db6d.dir\\Debug\\cmTC_4db6d.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_4db6d.dir\\Debug\\cmTC_4db6d.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_39699.dir\\Debug\\\\" /Fd"cmTC_39699.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-xzw0pf\\CheckIncludeFile.cxx"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_4db6d.dir\\Debug\\\\" /Fd"cmTC_4db6d.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1ljd0g\\CheckIncludeFile.cxx"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.37.32822 for x64
           CheckIncludeFile.cxx
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_39699.dir\\Debug\\\\" /Fd"cmTC_39699.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-xzw0pf\\CheckIncludeFile.cxx"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_4db6d.dir\\Debug\\\\" /Fd"cmTC_4db6d.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1ljd0g\\CheckIncludeFile.cxx"
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-xzw0pf\\Debug\\cmTC_39699.exe" /INCREMENTAL /ILK:"cmTC_39699.dir\\Debug\\cmTC_39699.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-xzw0pf/Debug/cmTC_39699.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-xzw0pf/Debug/cmTC_39699.lib" /MACHINE:X64  /machine:x64 cmTC_39699.dir\\Debug\\CheckIncludeFile.obj
-          cmTC_39699.vcxproj -> C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-xzw0pf\\Debug\\cmTC_39699.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1ljd0g\\Debug\\cmTC_4db6d.exe" /INCREMENTAL /ILK:"cmTC_4db6d.dir\\Debug\\cmTC_4db6d.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-1ljd0g/Debug/cmTC_4db6d.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-1ljd0g/Debug/cmTC_4db6d.lib" /MACHINE:X64  /machine:x64 cmTC_4db6d.dir\\Debug\\CheckIncludeFile.obj
+          cmTC_4db6d.vcxproj -> C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1ljd0g\\Debug\\cmTC_4db6d.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_39699.dir\\Debug\\cmTC_39699.tlog\\unsuccessfulbuild".
-          Touching "cmTC_39699.dir\\Debug\\cmTC_39699.tlog\\cmTC_39699.lastbuildstate".
-        Done Building Project "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-xzw0pf\\cmTC_39699.vcxproj" (default targets).
+          Deleting file "cmTC_4db6d.dir\\Debug\\cmTC_4db6d.tlog\\unsuccessfulbuild".
+          Touching "cmTC_4db6d.dir\\Debug\\cmTC_4db6d.tlog\\cmTC_4db6d.lastbuildstate".
+        Done Building Project "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1ljd0g\\cmTC_4db6d.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:01.14
+        Time Elapsed 00:00:01.09
         
       exitCode: 0
   -
@@ -444,8 +444,8 @@ events:
     checks:
       - "Performing Test CXX_FILESYSTEM_NO_LINK_NEEDED"
     directories:
-      source: "C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-ypodom"
-      binary: "C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-ypodom"
+      source: "C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-txwusx"
+      binary: "C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-txwusx"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
@@ -459,39 +459,39 @@ events:
       variable: "CXX_FILESYSTEM_NO_LINK_NEEDED_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-ypodom'
+        Change Dir: 'C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-txwusx'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_a29a7.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_3c5b3.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.7.2+d6990bcfa for .NET Framework
-        Build started 13/1/2568 12:55:39.
+        Build started 13/1/2568 15:42:20.
         
-        Project "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ypodom\\cmTC_a29a7.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-txwusx\\cmTC_3c5b3.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_a29a7.dir\\Debug\\".
-          Creating directory "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ypodom\\Debug\\".
-          Creating directory "cmTC_a29a7.dir\\Debug\\cmTC_a29a7.tlog\\".
+          Creating directory "cmTC_3c5b3.dir\\Debug\\".
+          Creating directory "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-txwusx\\Debug\\".
+          Creating directory "cmTC_3c5b3.dir\\Debug\\cmTC_3c5b3.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_a29a7.dir\\Debug\\cmTC_a29a7.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_a29a7.dir\\Debug\\cmTC_a29a7.tlog\\unsuccessfulbuild".
+          Creating "cmTC_3c5b3.dir\\Debug\\cmTC_3c5b3.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_3c5b3.dir\\Debug\\cmTC_3c5b3.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CXX_FILESYSTEM_NO_LINK_NEEDED /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_a29a7.dir\\Debug\\\\" /Fd"cmTC_a29a7.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ypodom\\src.cxx"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CXX_FILESYSTEM_NO_LINK_NEEDED /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_3c5b3.dir\\Debug\\\\" /Fd"cmTC_3c5b3.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-txwusx\\src.cxx"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.37.32822 for x64
           src.cxx
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CXX_FILESYSTEM_NO_LINK_NEEDED /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_a29a7.dir\\Debug\\\\" /Fd"cmTC_a29a7.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ypodom\\src.cxx"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CXX_FILESYSTEM_NO_LINK_NEEDED /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_3c5b3.dir\\Debug\\\\" /Fd"cmTC_3c5b3.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-txwusx\\src.cxx"
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ypodom\\Debug\\cmTC_a29a7.exe" /INCREMENTAL /ILK:"cmTC_a29a7.dir\\Debug\\cmTC_a29a7.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-ypodom/Debug/cmTC_a29a7.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-ypodom/Debug/cmTC_a29a7.lib" /MACHINE:X64  /machine:x64 cmTC_a29a7.dir\\Debug\\src.obj
-          cmTC_a29a7.vcxproj -> C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ypodom\\Debug\\cmTC_a29a7.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-txwusx\\Debug\\cmTC_3c5b3.exe" /INCREMENTAL /ILK:"cmTC_3c5b3.dir\\Debug\\cmTC_3c5b3.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-txwusx/Debug/cmTC_3c5b3.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/weerapol/Desktop/test-download/gitlab-artifact-downloader/build/CMakeFiles/CMakeScratch/TryCompile-txwusx/Debug/cmTC_3c5b3.lib" /MACHINE:X64  /machine:x64 cmTC_3c5b3.dir\\Debug\\src.obj
+          cmTC_3c5b3.vcxproj -> C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-txwusx\\Debug\\cmTC_3c5b3.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_a29a7.dir\\Debug\\cmTC_a29a7.tlog\\unsuccessfulbuild".
-          Touching "cmTC_a29a7.dir\\Debug\\cmTC_a29a7.tlog\\cmTC_a29a7.lastbuildstate".
-        Done Building Project "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ypodom\\cmTC_a29a7.vcxproj" (default targets).
+          Deleting file "cmTC_3c5b3.dir\\Debug\\cmTC_3c5b3.tlog\\unsuccessfulbuild".
+          Touching "cmTC_3c5b3.dir\\Debug\\cmTC_3c5b3.tlog\\cmTC_3c5b3.lastbuildstate".
+        Done Building Project "C:\\Users\\weerapol\\Desktop\\test-download\\gitlab-artifact-downloader\\build\\CMakeFiles\\CMakeScratch\\TryCompile-txwusx\\cmTC_3c5b3.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:01.16
+        Time Elapsed 00:00:01.14
         
       exitCode: 0
     runResult:

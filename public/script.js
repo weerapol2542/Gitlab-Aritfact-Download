@@ -3,6 +3,47 @@ let currentPage = 1;
 const PER_PAGE = 10;
 let searchDebounceTimer;
 
+
+let isServerHealthy = true;
+let serverCheckInterval;
+
+async function checkServerHealth() {
+    try {
+        const response = await fetch(`${API_BASE_URL}/settings`, {
+            method: 'GET',
+            headers: {
+                'Cache-Control': 'no-cache'
+            }
+        });
+        
+        if (!response.ok) {
+            throw new Error('Server is not responding');
+        }
+        
+        if (!isServerHealthy) {
+            isServerHealthy = true;
+            showToast('Server connection restored', 'success');
+        }
+    } catch (error) {
+        if (isServerHealthy) {
+            isServerHealthy = false;
+            showToast('Lost connection to server. Please check if the server is running.', 'error');
+        }
+    }
+}
+
+// Start server health monitoring
+function startServerHealthCheck() {
+    checkServerHealth(); // Initial check
+    serverCheckInterval = setInterval(checkServerHealth, 5000); // Check every 5 seconds
+}
+
+// Stop server health monitoring
+function stopServerHealthCheck() {
+    if (serverCheckInterval) {
+        clearInterval(serverCheckInterval);
+    }
+}
 // Toast Notifications
 function showToast(message, type = "success") {
   const toast = document.createElement("div");
@@ -432,6 +473,7 @@ async function monitorDownload(jobId, pipelineId, artifactPaths) {
   downloadDiv.className = "download-status";
   downloadDiv.id = `download-${jobId}`;
 
+  // Initial download status UI setup
   downloadDiv.innerHTML = `
       <div class="download-header">
           <div class="download-info">
@@ -464,17 +506,33 @@ async function monitorDownload(jobId, pipelineId, artifactPaths) {
               <span class="download-size">0 KB / Unknown</span>
           </div>
       </div>
-      <div class="error-message" style="display: none;"></div>
+      <div class="error-message" style="display: none;">
+          <i class="fas fa-exclamation-circle"></i>
+          <div class="error-content"></div>
+          <button class="btn secondary retry-btn" style="display: none;">
+              <i class="fas fa-sync"></i> Retry
+          </button>
+      </div>
   `;
 
   statusContainer.insertBefore(downloadDiv, statusContainer.firstChild);
 
+  let retryCount = 0;
+  const MAX_RETRIES = 3;
   let lastUpdate = Date.now();
   let lastBytes = 0;
+  let consecutiveErrors = 0;
+  let isRetrying = false;
 
   const updateInterval = setInterval(async () => {
+      if (!isServerHealthy) {
+          showDownloadError(downloadDiv, "Server connection lost. Waiting for connection to resume...");
+          return;
+      }
+
       try {
           const response = await fetch(`${API_BASE_URL}/artifacts/status/${jobId}`);
+          
           if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status}`);
           }
@@ -491,28 +549,66 @@ async function monitorDownload(jobId, pipelineId, artifactPaths) {
               }
           } catch (e) {
               console.error("JSON parse error:", e);
-              throw new Error("Invalid JSON response");
+              throw new Error("Invalid server response format");
+          }
+
+          // Reset error counters on successful response
+          consecutiveErrors = 0;
+          isRetrying = false;
+          hideDownloadError(downloadDiv);
+
+          // Check for stalled download
+          const currentTime = Date.now();
+          const timeSinceLastUpdate = (currentTime - lastUpdate) / 1000;
+          
+          if (parsedData.status === "in_progress" && timeSinceLastUpdate > 30 && 
+              parsedData.bytes_downloaded === lastBytes) {
+              showDownloadWarning(downloadDiv, "Download appears to be stalled. Checking connection...");
           }
 
           updateDownloadUI(downloadDiv, parsedData, lastBytes, lastUpdate);
 
-          lastUpdate = Date.now();
+          lastUpdate = currentTime;
           lastBytes = parsedData.bytes_downloaded || 0;
 
-          // Handle completion states
-          if (["completed", "failed"].includes(parsedData.status)) {
+          if (["completed", "failed", "cancelled"].includes(parsedData.status)) {
               clearInterval(updateInterval);
               handleDownloadCompletion(downloadDiv, parsedData, artifactPaths, pipelineId, jobId);
           }
+
       } catch (error) {
           console.error("Status update error:", error);
-          const errorElement = downloadDiv.querySelector(".error-message");
-          errorElement.textContent = error.message;
-          errorElement.style.display = "block";
+          consecutiveErrors++;
+
+          if (consecutiveErrors >= 3) {
+              const errorMessage = `Download monitoring error: ${error.message}`;
+              showDownloadError(downloadDiv, errorMessage, true);
+              
+              if (!isRetrying && retryCount < MAX_RETRIES) {
+                  retryCount++;
+                  isRetrying = true;
+                  
+                  showDownloadWarning(
+                      downloadDiv, 
+                      `Connection attempt ${retryCount}/${MAX_RETRIES}. Retrying in 5 seconds...`
+                  );
+                  
+                  setTimeout(() => {
+                      isRetrying = false;
+                  }, 5000);
+              } else if (retryCount >= MAX_RETRIES) {
+                  clearInterval(updateInterval);
+                  showDownloadError(
+                      downloadDiv,
+                      `Download failed after ${MAX_RETRIES} retry attempts. Please try again later.`,
+                      false
+                  );
+              }
+          }
       }
   }, 1000);
 
-  setupDownloadControls(downloadDiv, jobId);
+  setupDownloadControls(downloadDiv, jobId, updateInterval);
 }
 
 function createDownloadSummaryModal(summary) {
@@ -604,6 +700,37 @@ function createDownloadSummaryModal(summary) {
 
   modal.innerHTML = modalContent;
   return modal;
+}
+
+function showDownloadError(downloadDiv, message, showRetry = true) {
+  const errorElement = downloadDiv.querySelector(".error-message");
+  const errorContent = downloadDiv.querySelector(".error-content");
+  const retryButton = downloadDiv.querySelector(".retry-btn");
+  
+  errorContent.textContent = message;
+  errorElement.style.display = "flex";
+  errorElement.className = "error-message";
+  
+  if (showRetry) {
+      retryButton.style.display = "inline-flex";
+      retryButton.onclick = () => retryDownload(downloadDiv);
+  } else {
+      retryButton.style.display = "none";
+  }
+}
+
+function showDownloadWarning(downloadDiv, message) {
+  const errorElement = downloadDiv.querySelector(".error-message");
+  const errorContent = downloadDiv.querySelector(".error-content");
+  
+  errorContent.textContent = message;
+  errorElement.style.display = "flex";
+  errorElement.className = "error-message warning";
+}
+
+function hideDownloadError(downloadDiv) {
+  const errorElement = downloadDiv.querySelector(".error-message");
+  errorElement.style.display = "none";
 }
 
 function updateDownloadUI(downloadDiv, status, lastBytes, lastUpdate) {
@@ -786,35 +913,52 @@ async function cancelDownload(jobId) {
   }
 }
 
-function setupDownloadControls(downloadDiv, jobId) {
+function setupDownloadControls(downloadDiv, jobId, updateInterval) {
   const pauseBtn = downloadDiv.querySelector(".pause-btn");
   const resumeBtn = downloadDiv.querySelector(".resume-btn");
   const cancelBtn = downloadDiv.querySelector(".cancel-btn");
+  const retryBtn = downloadDiv.querySelector(".retry-btn");
 
-  // Ensure buttons exist before adding event listeners
   if (pauseBtn) {
-    pauseBtn.addEventListener("click", async () => {
-      await pauseDownload(jobId);
-      pauseBtn.style.display = "none";
-      resumeBtn.style.display = "inline-block";
-    });
+      pauseBtn.addEventListener("click", async () => {
+          try {
+              await pauseDownload(jobId);
+              pauseBtn.style.display = "none";
+              resumeBtn.style.display = "inline-block";
+          } catch (error) {
+              showToast(`Failed to pause download: ${error.message}`, "error");
+          }
+      });
   }
 
   if (resumeBtn) {
-    resumeBtn.addEventListener("click", async () => {
-      await resumeDownload(jobId);
-      resumeBtn.style.display = "none";
-      pauseBtn.style.display = "inline-block";
-    });
+      resumeBtn.addEventListener("click", async () => {
+          try {
+              await resumeDownload(jobId);
+              resumeBtn.style.display = "none";
+              pauseBtn.style.display = "inline-block";
+          } catch (error) {
+              showToast(`Failed to resume download: ${error.message}`, "error");
+          }
+      });
   }
 
   if (cancelBtn) {
-    cancelBtn.addEventListener("click", async () => {
-      if (confirm("Are you sure you want to cancel this download?")) {
-        await cancelDownload(jobId);
-        downloadDiv.remove();
-      }
-    });
+      cancelBtn.addEventListener("click", async () => {
+          if (confirm("Are you sure you want to cancel this download?")) {
+              try {
+                  await cancelDownload(jobId);
+                  clearInterval(updateInterval);
+                  downloadDiv.remove();
+              } catch (error) {
+                  showToast(`Failed to cancel download: ${error.message}`, "error");
+              }
+          }
+      });
+  }
+
+  if (retryBtn) {
+      retryBtn.addEventListener("click", () => retryDownload(downloadDiv));
   }
 }
 
@@ -936,11 +1080,10 @@ function handlePatternKeydown(event) {
 
 // Initialize Application
 document.addEventListener("DOMContentLoaded", () => {
+  startServerHealthCheck();
   const settingsModal = document.getElementById("settings-modal");
   const openSettingsBtn = document.getElementById("open-settings");
   const closeSettingsBtn = document.getElementById("close-settings");
-  const togglePasswordBtn = document.querySelector(".toggle-password");
-  const selectFolderBtn = document.querySelector(".select-folder");
   const apiTokenInput = document.getElementById("api-token");
   const downloadPathInput = document.getElementById("download-path");
 
@@ -949,6 +1092,14 @@ document.addEventListener("DOMContentLoaded", () => {
   if (savedPath) {
     downloadPathInput.value = savedPath;
   }
+
+  // Save path when changed
+  downloadPathInput.addEventListener('change', () => {
+    const path = downloadPathInput.value.trim();
+    if (path) {
+      localStorage.setItem("download_path", path);
+    }
+  });
 
   // Settings Modal
   openSettingsBtn.addEventListener("click", () => {
@@ -964,35 +1115,6 @@ document.addEventListener("DOMContentLoaded", () => {
       settingsModal.style.display = "none";
     }
   });
-
-  // Toggle password visibility
-  togglePasswordBtn.addEventListener("click", () => {
-    const type = apiTokenInput.type === "password" ? "text" : "password";
-    apiTokenInput.type = type;
-    togglePasswordBtn.innerHTML = `<i class="far fa-${
-      type === "password" ? "eye" : "eye-slash"
-    }"></i>`;
-  });
-
-  // Select folder
-  if (selectFolderBtn) {
-    selectFolderBtn.addEventListener("click", async () => {
-      try {
-        const selectedPath = await handleFolderSelection();
-        if (selectedPath) {
-          downloadPathInput.value = selectedPath;
-          localStorage.setItem("download_path", selectedPath);
-          showToast("Download path set to: " + selectedPath, "success");
-        }
-      } catch (error) {
-        console.error("Error selecting folder:", error);
-        showToast(
-          "Failed to select folder. Please enter path manually.",
-          "error"
-        );
-      }
-    });
-  }
 
   // Initialize components
   fetchSettings();
@@ -1057,28 +1179,34 @@ document.addEventListener("DOMContentLoaded", () => {
 // Folder Selection
 async function handleFolderSelection() {
   return new Promise((resolve) => {
-    const input = document.createElement("input");
-    input.type = "file";
-    input.webkitdirectory = true;
-    input.directory = true;
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.webkitdirectory = true;
+      input.directory = true;
 
-    input.addEventListener("change", function (e) {
-      if (e.target.files.length > 0) {
-        const file = e.target.files[0];
-        let folderPath;
-        if (file.path) {
-          folderPath = file.path.split("\\").slice(0, -1).join("\\");
-        } else {
-          folderPath = file.webkitRelativePath.split("/")[0];
-        }
-        resolve(folderPath);
-      }
-    });
+      input.addEventListener('change', function(e) {
+          if (e.target.files.length > 0) {
+              const file = e.target.files[0];
+              // ใช้ file.path เพื่อรับ path เต็มของไฟล์
+              let folderPath = file.path;
+              
+              if (folderPath) {
+                  // ตัดชื่อไฟล์ออกจาก path
+                  folderPath = folderPath.substring(0, folderPath.lastIndexOf('\\'));
+                  
+                  // ตรวจสอบและลบ \ ที่อยู่ท้าย path ถ้ามี
+                  if (folderPath.endsWith('\\')) {
+                      folderPath = folderPath.slice(0, -1);
+                  }
+                  
+                  resolve(folderPath);
+              }
+          }
+      });
 
-    input.click();
+      input.click();
   });
 }
-
 // Status formatting
 function formatStatus(status) {
   const statusMap = {

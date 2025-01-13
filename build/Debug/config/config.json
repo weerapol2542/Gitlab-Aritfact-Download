@@ -1,9 +1,9 @@
 {
     "api_token": "glpat-8uerLzR9F7RB32xKLkzS",
     "artifact_paths": [
-        "installer/GitLabArtifactDownloader-Setup.exe",
         "version.txt",
         "dist/GitLabArtifactDownloader.app/Contents/Info.plist",
+        "installer/GitLabArtifactDownloader-Setup.exe",
         "dist/GitLabArtifactDownloader.app/Contents/MacOS/GitLabArtifactDownloader",
         "dist/GitLabArtifactDownloader.app/Contents/Resources/AppIcon.icns",
         "dist/GitLabArtifactDownloader.app/Contents/_CodeSignature/CodeResources"
