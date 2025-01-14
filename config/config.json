@@ -1,11 +1,11 @@
 {
-    "api_token": "token",
+    "api_token": "",
     "artifact_paths": [
-        "parts"
+        ""
         
     ],
-    "download_path": "parts",
+    "download_path": "",
     "encrypted_api_token": "",
-    "gitlab_url": "www",
-    "project_id": "id"
+    "gitlab_url": "",
+    "project_id": ""
 }
